@@ -211,4 +211,13 @@ class BallCatchingBoxView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BallCatchingBoxView {
+            val view : BallCatchingBoxView = BallCatchingBoxView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
