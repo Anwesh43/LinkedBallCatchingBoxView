@@ -1,0 +1,3 @@
+include ':ballcatchingboxview'
+include ':app'
+rootProject.name = "LinkedBallCatchingBoxView"
