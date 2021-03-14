@@ -186,4 +186,27 @@ class BallCatchingBoxView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BallCatchingBoxView) {
+
+        private val animator : Animator = Animator(view)
+        private val bcb : BallCatchingBox = BallCatchingBox(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bcb.draw(canvas, paint)
+            animator.animate {
+                bcb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bcb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
